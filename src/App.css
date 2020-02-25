@@ -32,7 +32,20 @@ table {
   margin: auto;
 }
 td {
-  padding: 0 1em;
+  padding: 0.1em 1em;
+}
+h4 {
+  margin: none;
+}
+p {
+  margin: 0;
+}
+
+.tightd {
+  padding: 0.25em 0 0.25em 1em;
+}
+.tdcheck {
+  padding: 0;
 }
 
 @keyframes App-logo-spin {
