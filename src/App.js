@@ -3,10 +3,11 @@ import { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [wine, setWine] = useState('White'),
+  const [wine, setWine] = useState('Red'),
   [color, setColor] = useState(null),
-  colors = wine === 'Red'? ['Garnet', 'Ruby', 'Purple'] : ['Straw', 'Yellow', 'Gold'],
   fruitColor = wine === 'Red'? ['Red', 'Black', 'Blue'] : ['Apple / Pear', 'Citrus', 'Stone Fruit', 'Tropical'],
+  // [fruit, setFruit] = useState(fruitColor),
+  colors = wine === 'Red'? ['Garnet', 'Ruby', 'Purple'] : ['Straw', 'Yellow', 'Gold'],
   nonFruit = wine === 'Red'?
   [
     'Floral',
@@ -34,7 +35,8 @@ function App() {
     'Inorganic Earth: Stone, Rock, Mineral, Sulfur',
     'New Oak: Vanilla, Brown Baking Spices, Smoke'
   ],
-  structures = wine === 'Red'? ['Tannin', 'Acid', 'Alcohol'] : ['Bitter, Phenolic', 'Sweetness', 'Acid', 'Aclohol'];
+  structures = wine === 'Red'? ['Tannin', 'Acid', 'Alcohol'] : ['Bitter, Phenolic', 'Sweetness', 'Acid', 'Aclohol'],
+  ages = wine === 'Red'? ['1-3', '4-6', '7+'] : ['1-2', '3-4', '5+'];
 
   return (
     <div className="App">
@@ -70,7 +72,8 @@ function App() {
             <tr key={fc}>
               <td>{fc}</td>
               <td>Yes <input type="radio" name={fc} value={true}/></td>
-                <td>No <input type="radio" name={fc} value={false}/></td>
+              <td>No <input type="radio" name={fc} value={false}/></td>
+              <td>Describe</td>
             </tr>
           ))}
         </tbody>
@@ -169,7 +172,47 @@ function App() {
         </tbody>
       </table>
       <h2>Conclusion</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td>Country of Origin</td>
+              <td><input /></td>
+            </tr>
+            <tr>
+              <td>Primary Grape</td>
+              <td><input /></td>
+              <td></td>
+              <td></td>
+              <td>Explain Why</td>
+              <textarea />
+            </tr>
+            <tr>
+              <td>World of Origin</td>
+              <td>New World <input type='radio' name='world' /></td>
+              <td>Old World <input type='radio' name='world' /></td>
+              <td></td>
+              <td>Explain Why</td>
+              <textarea />
+            </tr>
+            <tr>
+              <td>Type of Climate</td>
+              <td>Cool<input type='radio' name='climate' /></td>
+              <td>Moderate <input type='radio' name='climate' /></td>
+              <td>Warm <input type='radio' name='climate' /></td>
+              <td>Explain Why</td>
+              <textarea />
+            </tr>
+            <tr>
+              <td>General Age</td>
+              {ages.map(a => (
+                <td>{a} Years <input type="radio" name='age'/></td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
       <h2>Sales Pitch</h2>
+      <h4>Sell this wine to your guest in two sentences or less:</h4>
+      <textarea rows="4" cols="60" />
     </div>
   );
 }
